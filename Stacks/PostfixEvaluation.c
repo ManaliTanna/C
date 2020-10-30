@@ -7,7 +7,7 @@
 #include<string.h>
 #include<conio.h>
 
-//evaluation of postfix expression (single digit operand binary operators
+//evaluation of postfix expression (single digit operand binary operators)
 struct stack{
 	unsigned int size; //MAX ELEMENTS
 	int top; //index to access TOS
@@ -32,15 +32,10 @@ int isfull(stack st)//returns 1 if stack is ful otherwise 0
 
 void push(stack *p_st,int ele)
 {
-	printf("ele is %d\n",ele);
 	if(isfull(*p_st))
 		printf("STACK IS FULL\n");
-	else{
-		//p_st -> top++;
-		//p_st -> ++top;
+	else
 		p_st -> s[++(p_st->top)] = ele;
-		printf("Pushed: %d\n",p_st -> s[p_st -> top]);
-	}
 }
 
 int pop(stack *p_st)
@@ -52,7 +47,6 @@ int pop(stack *p_st)
 	{
 		ele = p_st -> s[p_st -> top]; 
 		p_st -> top--;
-		printf("Popped %d\n",ele);
 		return ele;
 	}
 }
@@ -100,18 +94,16 @@ void main()
 	
 	printf("Enter the postfix expression where each operand is single digit :- \n");
 	scanf("%s",exp);
-	printf("Expression is : %s\n",exp);
+
 	
 	st.size = strlen(exp);
-	//printf("%u\n",st.size);
-	//printf("%d\n",strlen(exp));
+
 	
 	createstack(&st);
 	
 	token = exp[k]; 
 	while(token!='\0')
 	{ 
-		printf("Token is %c\n",token);
 		if(isdigit(token)) //check for digit character
 			push(&st,token-'0'); // -48 to remove the affect of ASCII as its an integer stack
 		else //not an operand
@@ -129,3 +121,13 @@ void main()
 	destroy(&st);
 	getche();
 }
+
+
+/*Postfix Evaluation Algorithm
+1) Create a operand stack
+2) Scan the given expression and do following for every scanned element.
+…..a) If the element is a operand, push it into the stack
+…..b) If the element is a operator, pop operands for the operator from stack. op2 and then op1. 
+		Evaluate the operator and push the result back to the stack
+3) When the expression is ended, the number in the stack is the final answer*/
+

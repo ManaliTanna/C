@@ -1,4 +1,4 @@
-//Recurssion is application of Stack#include
+//Recursion is an application of Stack
 //Tower of Hanoi 
 #include<stdio.h>
 #include<conio.h>
@@ -11,7 +11,7 @@ void TOH(int n,char source,char auxillary,char destination)
 	{
 		printf("Move a disc from tower %c to tower %c\n",source,destination);
 	}
-	else //recursive case...n>1
+	else //recursive cases...n>1
 	{
 	
 		//STEP 1: move n-1 disk from source to auxillary using destination
@@ -31,17 +31,20 @@ int main()
 	int n;
 	printf("Enter number of dics : ");
 	scanf("%d",&n);
+	
 	char source='A',auxillary='B',destination='C';
+	
 	TOH(n,source,auxillary,destination); //initial call
+	
 	printf("Press enter to exit\n");
 	getche();
 }
 
 
 
-//for 3 disks
-//10 function calls
-//7 disc moves
+//for 3 disks: 
+//10 - function calls
+//7 -  disc moves
 
 
 
